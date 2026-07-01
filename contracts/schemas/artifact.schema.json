@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/compxpr/text/contracts/schemas/artifact.schema.json",
+  "title": "Artifact",
+  "type": "object",
+  "required": ["artifact_id", "kind", "status", "path"],
+  "properties": {
+    "artifact_id": { "type": "string" },
+    "kind": { "type": "string", "enum": ["note", "snippet", "template", "handoff", "review", "package"] },
+    "status": { "type": "string", "enum": ["created", "missing", "failed", "skipped", "not_applicable"] },
+    "path": { "type": "string" },
+    "openability_expected": { "type": "boolean" },
+    "contains_secret_value": { "type": "boolean", "const": false },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}
