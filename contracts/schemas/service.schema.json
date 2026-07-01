@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/compxpr/text/contracts/schemas/service.schema.json",
+  "title": "Service",
+  "type": "object",
+  "required": ["id", "required", "fallback"],
+  "properties": {
+    "id": { "type": "string" },
+    "required": { "type": "boolean" },
+    "fallback": { "type": "string" },
+    "path": { "type": "string" }
+  },
+  "additionalProperties": false
+}
