@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/compxpr/text/contracts/schemas/content_record.schema.json",
+  "title": "Content Record",
+  "type": "object",
+  "required": ["content_id", "path", "purpose", "audience", "status", "checks"],
+  "properties": {
+    "content_id": { "type": "string" },
+    "path": { "type": "string" },
+    "purpose": { "type": "string" },
+    "audience": { "type": "string", "enum": ["personal", "engineering", "customer", "internal", "public", "mixed"] },
+    "status": { "type": "string", "enum": ["draft", "ready", "deprecated", "review", "blocked"] },
+    "source_notes": { "type": "array", "items": { "type": "string" } },
+    "checks": { "type": "array", "items": { "$ref": "check.schema.json" } },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}
