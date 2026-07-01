@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/compxpr/text/contracts/schemas/manifest.schema.json",
+  "title": "Manifest",
+  "type": "object",
+  "required": ["manifest_id", "version", "repo", "records", "services", "contracts"],
+  "properties": {
+    "manifest_id": { "type": "string", "pattern": "^text-repo:[a-z0-9_.:-]+$" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "repo": { "$ref": "repo.schema.json" },
+    "records": { "type": "array", "items": { "$ref": "content_record.schema.json" }, "minItems": 1 },
+    "services": { "type": "array", "items": { "$ref": "service.schema.json" } },
+    "contracts": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+  },
+  "additionalProperties": false
+}
