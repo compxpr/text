@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/compxpr/text/contracts/schemas/check.schema.json",
+  "title": "Check",
+  "type": "object",
+  "required": ["check_id", "command", "status"],
+  "properties": {
+    "check_id": { "type": "string" },
+    "command": { "type": "string" },
+    "status": { "type": "string", "enum": ["pass", "fail", "not_run", "not_applicable"] },
+    "evidence": { "type": "string" }
+  },
+  "additionalProperties": false
+}
