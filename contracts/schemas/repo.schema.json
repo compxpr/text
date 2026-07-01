@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/compxpr/text/contracts/schemas/repo.schema.json",
+  "title": "Repository Contract",
+  "type": "object",
+  "required": ["repo_id", "local_first", "owns_content", "requires_validation"],
+  "properties": {
+    "repo_id": { "type": "string", "const": "text" },
+    "local_first": { "type": "boolean", "const": true },
+    "owns_content": { "type": "boolean", "const": true },
+    "requires_validation": { "type": "boolean", "const": true },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}
