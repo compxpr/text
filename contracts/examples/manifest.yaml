@@ -1,0 +1,33 @@
+manifest_id: text-repo:synthetic:001
+version: 0.1.0
+repo:
+  repo_id: text
+  local_first: true
+  owns_content: true
+  requires_validation: true
+  limitations:
+    - Synthetic example only.
+records:
+  - content_id: content:synthetic:sample
+    path: content/sample.md
+    purpose: Synthetic content record.
+    audience: internal
+    status: draft
+    source_notes:
+      - synthetic source note
+    checks:
+      - check_id: check:synthetic:review
+        command: manual review
+        status: not_run
+        evidence: synthetic example
+    limitations:
+      - No real content is implied by this example.
+services:
+  - id: app-platform
+    required: false
+    fallback: Continue with local content records.
+    path: contracts/integrations/app-platform.md
+contracts:
+  - Content metadata remains explicit.
+  - Review checks remain recorded.
+  - Shared services do not change content meaning.
