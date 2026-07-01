@@ -1,0 +1,8 @@
+artifact_id: artifact:synthetic:sample-note
+kind: note
+status: created
+path: content/sample.md
+openability_expected: true
+contains_secret_value: false
+limitations:
+  - Synthetic artifact metadata only.
