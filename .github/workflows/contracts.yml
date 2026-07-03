@@ -28,6 +28,9 @@ jobs:
       - name: Run Python contract checker
         run: python contracts/tools/check.py
 
+      - name: Run registry validation surface
+        run: python tools/validate_registry.py
+
       - name: Run PowerShell contract wrapper
         shell: pwsh
         run: pwsh -NoProfile -File contracts/tools/Validate-Contracts.ps1

@@ -1,31 +1,32 @@
-manifest_id: text-repo:synthetic:001
-version: 0.1.0
+manifest_id: text-repo:content:001
+version: 1.0.0
 repo:
   repo_id: text
   local_first: true
   owns_content: true
   requires_validation: true
   limitations:
-    - Synthetic example only.
+    - Stores reusable content metadata and safe validation evidence only.
 records:
-  - content_id: content:synthetic:sample
-    path: content/sample.md
-    purpose: Synthetic content record.
-    audience: internal
-    status: draft
+  - content_id: content:operator:handoff-template
+    path: content/operator-handoff-template.md
+    purpose: Reusable operator handoff template for engineering and documentation follow-up.
+    audience: engineering
+    status: ready
     source_notes:
-      - synthetic source note
+      - Safe reusable template maintained locally.
+      - No customer-identifying content.
     checks:
-      - check_id: check:synthetic:review
-        command: manual review
-        status: not_run
-        evidence: synthetic example
+      - check_id: check:content:handoff-template-review
+        command: python tools/validate_registry.py
+        status: pass
+        evidence: manual replay 2026-07-03 on local Windows workstation
     limitations:
-      - No real content is implied by this example.
+      - Template content only; consumers still tailor final handoff text per workflow.
 services:
   - id: app-platform
     required: false
-    fallback: Continue with local content records.
+    fallback: Continue with local content records and reusable handoff templates.
     path: contracts/integrations/app-platform.md
 contracts:
   - Content metadata remains explicit.
