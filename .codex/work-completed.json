@@ -11,8 +11,8 @@
         "compxpr/codex#1"
       ],
       "branch": "repo-review-01-text",
-      "commit_sha": "fbd9db0",
-      "pr_url": null,
+      "commit_sha": "bc91964",
+      "pr_url": "https://github.com/compxpr/text/pull/2",
       "summary": "Added queue-specified registry validation replay and replaced the synthetic-only sample with a real reusable operator handoff template record.",
       "files_changed": [
         "WORK_COMPLETED.md",
@@ -49,3 +49,4 @@
     "Monitor the readiness PR and merge after CI/review stays green."
   ]
 }
+

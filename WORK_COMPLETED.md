@@ -11,8 +11,8 @@
 - date: `2026-07-03T14:05:00-05:00`
 - run id: `repo-review-01-text`
 - run branch: `repo-review-01-text`
-- commit SHA: `fbd9db0`
-- PR URL:
+- commit SHA: `bc91964`
+- PR URL: https://github.com/compxpr/text/pull/2
 - owner issues: `compxpr/codex#1`
 - purpose: `repo-review-01-text readiness`
 - summary: `Added queue-specified registry validation replay and replaced the synthetic-only sample with a real reusable operator handoff template record.`
@@ -23,3 +23,4 @@
 - SPEC100 unresolved_gaps: `0`
 - repeat-prevention note: `Do not remove the real content record or tools/validate_registry.py while canonical readiness validation expects them.`
 - next allowed action: `open PR, confirm CI stays green, then merge to main`
+
