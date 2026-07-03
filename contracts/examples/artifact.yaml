@@ -1,8 +1,8 @@
-artifact_id: artifact:synthetic:sample-note
+artifact_id: artifact:content:operator-handoff-template
 kind: note
 status: created
-path: content/sample.md
+path: content/operator-handoff-template.md
 openability_expected: true
 contains_secret_value: false
 limitations:
-  - Synthetic artifact metadata only.
+  - Template content only; final handoff output remains workflow-specific.

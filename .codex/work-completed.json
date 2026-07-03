@@ -1,0 +1,52 @@
+{
+  "repo": "compxpr/text",
+  "local_path": "C:/repos/text",
+  "last_updated": "2026-07-03T14:05:00-05:00",
+  "automation_state": "in_progress",
+  "completed_runs": [
+    {
+      "run_id": "repo-review-01-text",
+      "prompt_id": "repo-review-01-text",
+      "issues": [
+        "compxpr/codex#1"
+      ],
+      "branch": "repo-review-01-text",
+      "commit_sha": "bc91964",
+      "pr_url": "https://github.com/compxpr/text/pull/2",
+      "summary": "Added queue-specified registry validation replay and replaced the synthetic-only sample with a real reusable operator handoff template record.",
+      "files_changed": [
+        "WORK_COMPLETED.md",
+        ".codex/work-completed.json",
+        "reports/repo-review-text.md",
+        "reports/repo-review-text.json",
+        "tools/validate_registry.py",
+        ".github/workflows/contracts.yml",
+        "content/operator-handoff-template.md",
+        "contracts/examples/manifest.yaml",
+        "contracts/examples/artifact.yaml",
+        "README.md"
+      ],
+      "validation_commands": [
+        "git status --short",
+        "git ls-files",
+        "python contracts/tools/check.py",
+        "python tools/validate_registry.py",
+        "pwsh -NoProfile -File contracts/tools/Validate-Contracts.ps1"
+      ],
+      "validation_status": "passed",
+      "artifacts": [
+        "reports/repo-review-text.md",
+        "reports/repo-review-text.json"
+      ],
+      "spec100_unresolved_gaps": 0,
+      "do_not_repeat": [
+        "Do not remove tools/validate_registry.py while canonical queue validation expects it.",
+        "Do not replace the real handoff template record with synthetic-only content."
+      ]
+    }
+  ],
+  "remaining_work": [
+    "Monitor the readiness PR and merge after CI/review stays green."
+  ]
+}
+

@@ -1,0 +1,77 @@
+{
+  "repo": "compxpr/text",
+  "run_id": "repo-review-01-text",
+  "controlling_issue": "compxpr/codex#1",
+  "queue_row": {
+    "priority": 10,
+    "phase": "utility",
+    "repo": "compxpr/text",
+    "local_path": "C:/repos/text",
+    "classification": "validated_contract",
+    "owner_issue": "compxpr/codex#1",
+    "dependency_blockers": [],
+    "single_writer_rule": "Codex/local is the only writer to repository files. ChatGPT is read-only for repository files unless Scott explicitly says: \"write directly to GitHub.\""
+  },
+  "findings": [
+    {
+      "id": "F001",
+      "severity": "P2",
+      "category": "validation-surface",
+      "status": "resolved",
+      "description": "Queue-specified command python tools/validate_registry.py was missing.",
+      "evidence": "Canonical control-plane validation expected python tools/validate_registry.py but the repo had no tools/validate_registry.py file before this run.",
+      "file": "tools/validate_registry.py",
+      "impact": "Control-plane readiness validation could not replay literally on this repo.",
+      "recommended_fix": "Keep tools/validate_registry.py wired into CI while queue validation expects it.",
+      "blocks_downstream_repos": "no",
+      "spec100_requirement_link": "readiness validation replay"
+    },
+    {
+      "id": "F002",
+      "severity": "P2",
+      "category": "content-catalog",
+      "status": "resolved",
+      "description": "The repo previously exposed only a synthetic sample rather than a real reusable content record.",
+      "evidence": "Added content/operator-handoff-template.md and updated contracts/examples/manifest.yaml plus contracts/examples/artifact.yaml to point at a real reusable handoff template record with replayable validation evidence.",
+      "file": "content/operator-handoff-template.md",
+      "impact": "Repo now has non-vacuous readiness evidence for safe downstream content reuse.",
+      "recommended_fix": "Keep future records tied to real reusable content paths and replayable validation commands.",
+      "blocks_downstream_repos": "no",
+      "spec100_requirement_link": "non-vacuous readiness evidence"
+    }
+  ],
+  "validations": [
+    {
+      "command": "python contracts/tools/check.py",
+      "exit_code": 0,
+      "meaningful_output": "Text repository contract validation passed",
+      "validates": "schema validity, required files, example manifest coverage, and content path/check presence",
+      "vacuous": "no"
+    },
+    {
+      "command": "python tools/validate_registry.py",
+      "exit_code": 0,
+      "meaningful_output": "Text repository contract validation passed",
+      "validates": "queue-specified validation surface replay",
+      "vacuous": "no"
+    },
+    {
+      "command": "pwsh -NoProfile -File contracts/tools/Validate-Contracts.ps1",
+      "exit_code": 0,
+      "meaningful_output": "Text repository contract validation passed",
+      "validates": "PowerShell wrapper plus local bootstrap path",
+      "vacuous": "no"
+    }
+  ],
+  "findings_by_severity": {
+    "P0": 0,
+    "P1": 0,
+    "P2": 0,
+    "P3": 0,
+    "P4": 0
+  },
+  "downstream_blast_radius": [],
+  "spec100_unresolved_gaps": 0,
+  "gate_status": "ready_for_merge",
+  "stop_reason": "REPO_REVIEW_COMPLETE"
+}

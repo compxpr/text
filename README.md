@@ -6,7 +6,7 @@ The repo's job is to preserve content purpose, audience, source notes, revision 
 
 ## Status
 
-Current status: contract foundation present; reusable content catalog not yet populated.
+Current status: contract foundation present; initial reusable content catalog record populated.
 
 This repo is active. It defines the contract model and validation surface for future text/content records.
 
@@ -116,8 +116,8 @@ For substantial changes, include proof for:
 
 ## Current next work
 
-1. Add real reusable content records.
-2. Expand examples beyond the synthetic sample.
+1. Add additional real reusable content records.
+2. Expand validation evidence beyond the initial handoff template record.
 3. Add report package export.
 4. Add content fixture coverage.
 5. Track validation evidence for every content record added.
