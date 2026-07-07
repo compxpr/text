@@ -54,8 +54,19 @@ try {
     }
 
     & $PythonExe -m pip install --upgrade pip
+    if ($LASTEXITCODE -ne 0) {
+        throw "pip upgrade failed with exit code $LASTEXITCODE."
+    }
+
     & $PythonExe -m pip install -r contract-requirements.txt
+    if ($LASTEXITCODE -ne 0) {
+        throw "Contract dependency install failed with exit code $LASTEXITCODE."
+    }
+
     & $PythonExe contracts\tools\check.py
+    if ($LASTEXITCODE -ne 0) {
+        throw "Contract checker failed with exit code $LASTEXITCODE."
+    }
 }
 finally {
     Pop-Location

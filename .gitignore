@@ -1,0 +1,6 @@
+# Local contract-validation virtual environment (see README "Validate")
+.venv-contracts/
+
+# Python bytecode
+__pycache__/
+*.pyc
