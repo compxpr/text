@@ -7,7 +7,8 @@ from pathlib import Path
 from typing import Any
 
 import yaml
-from jsonschema import Draft202012Validator, RefResolver
+from jsonschema import Draft202012Validator
+from referencing import Registry, Resource
 
 ROOT = Path(__file__).resolve().parents[2]
 SCHEMA_DIR = ROOT / "contracts" / "schemas"
@@ -64,21 +65,18 @@ def stop(msg: str) -> None:
     raise SystemExit(1)
 
 
-def store() -> dict[str, Any]:
-    result: dict[str, Any] = {}
+def schema_registry() -> Registry:
+    resources = []
     for path in sorted(SCHEMA_DIR.glob("*.schema.json")):
         schema = read_json(path)
-        result[path.name] = schema
-        result[str(path)] = schema
         if "$id" in schema:
-            result[schema["$id"]] = schema
-    return result
+            resources.append((schema["$id"], Resource.from_contents(schema)))
+    return Registry().with_resources(resources)
 
 
 def validate_with_schema(example: str, schema: str) -> None:
     schema_obj = read_json(ROOT / schema)
-    resolver = RefResolver.from_schema(schema_obj, store=store())
-    validator = Draft202012Validator(schema_obj, resolver=resolver)
+    validator = Draft202012Validator(schema_obj, registry=schema_registry())
     data = read_yaml(ROOT / example)
     errors = sorted(validator.iter_errors(data), key=lambda e: e.path)
     if errors:
