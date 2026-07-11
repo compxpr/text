@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# GENERATED from codex/templates/contract-catalog-scaffold v1.0.0
+# Do not hand-edit directly. To customize, fill in the placeholders documented
+# in codex's templates/contract-catalog-scaffold/USAGE.md and re-render, or
+# see this repo's contracts/README.md for the pinned version/commit.
 from __future__ import annotations
 
 import json
@@ -91,19 +95,19 @@ def validate_manifest_contract() -> None:
     if repo.get("owns_content") is not True:
         stop("owns_content must be true")
 
-    records = manifest.get("records", [])
-    if not records:
+    items = manifest.get("records", [])
+    if not items:
         stop("at least one content record is required")
 
-    for record in records:
-        content_id = record.get("content_id", "<missing content_id>")
-        content_path = record.get("path")
-        if not content_path:
-            stop(f"{content_id}: content path required")
-        if not (ROOT / content_path).exists():
-            stop(f"{content_id}: content path does not exist: {content_path}")
-        if not record.get("checks"):
-            stop(f"{content_id}: content checks required")
+    for item in items:
+        item_id = item.get("content_id", "<missing content_id>")
+        item_path = item.get("path")
+        if not item_path:
+            stop(item_id + ": content path required")
+        if not (ROOT / item_path).exists():
+            stop(item_id + ": content path does not exist: " + item_path)
+        if not item.get("checks"):
+            stop(item_id + ": content checks required")
 
 
 def main() -> int:
