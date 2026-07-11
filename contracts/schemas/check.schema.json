@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/compxpr/text/contracts/schemas/check.schema.json",
+  "$comment": "GENERATED from codex/templates/contract-catalog-scaffold v1.0.0 -- do not hand-edit; see contracts/README.md",
   "title": "Check",
   "type": "object",
   "required": ["check_id", "command", "status"],

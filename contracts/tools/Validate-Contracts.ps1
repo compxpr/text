@@ -1,3 +1,6 @@
+# GENERATED from codex/templates/contract-catalog-scaffold v1.0.0
+# Do not hand-edit directly. See this repo's contracts/README.md for the
+# pinned version/commit this was rendered from.
 [CmdletBinding()]
 param([switch]$RecreateVenv)
 
@@ -65,7 +68,7 @@ try {
 
     & $PythonExe contracts\tools\check.py
     if ($LASTEXITCODE -ne 0) {
-        throw "Contract checker failed with exit code $LASTEXITCODE."
+        throw "Contract validation failed with exit code $LASTEXITCODE."
     }
 }
 finally {
